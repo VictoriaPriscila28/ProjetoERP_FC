@@ -1,0 +1,46 @@
+unit uVendas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
+
+type
+  TfrmVendas = class(TForm)
+    pnlTop: TPanel;
+    Label1: TLabel;
+    LabeledEdit1: TLabeledEdit;
+    Button1: TButton;
+    pnlBottom: TPanel;
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    DBNavigator1: TDBNavigator;
+    QryVendas: TZQuery;
+    dtsVendas: TDataSource;
+    QryVendaspedidoId: TZIntegerField;
+    QryVendasfornecedor: TZUnicodeStringField;
+    QryVendasvalortotal: TZFMTBCDField;
+    QryVendasTipo: TZUnicodeStringField;
+    QryVendasNota: TZUnicodeStringField;
+    QryVendasDatamovim: TZDateTimeField;
+    Panel2: TPanel;
+    Panel3: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmVendas: TfrmVendas;
+
+implementation
+
+{$R *.dfm}
+
+uses uDTMConexao;
+
+end.

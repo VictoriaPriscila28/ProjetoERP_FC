@@ -1,0 +1,34 @@
+inherited frmTelaProdutos: TfrmTelaProdutos
+  Caption = 'frmTelaProdutos'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnlBottom: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited DBNavigator1: TDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  inherited pnlTop: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited Label1: TLabel
+      Width = 194
+      Caption = 'Cadastro de Produtos'
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitWidth = 194
+    end
+    inherited LabeledEdit1: TLabeledEdit
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited DBGrid1: TDBGrid
+    Left = 8
+    Top = 152
+    Width = 752
+    Height = 180
+  end
+  inherited QryListagem: TZQuery
+    Active = True
+    SQL.Strings = (
+      'select * from produtos;')
+  end
+end

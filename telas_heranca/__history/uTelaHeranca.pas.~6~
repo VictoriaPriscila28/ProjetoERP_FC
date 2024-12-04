@@ -1,0 +1,53 @@
+unit uTelaHeranca;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.DBCtrls, Vcl.StdCtrls,
+  Vcl.Mask, Vcl.ExtCtrls, Data.DB, ZAbstractRODataset, ZAbstractDataset,
+  ZDataset, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TfrmTelaHeranca = class(TForm)
+    pnlBottom: TPanel;
+    pnlTop: TPanel;
+    LabeledEdit1: TLabeledEdit;
+    Label1: TLabel;
+    Button1: TButton;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+    QryListagem: TZQuery;
+    dtsListagem: TDataSource;
+  private
+    { Private declarations }
+    function RetornarCampoTraduzido(Campo: String): String;
+  public
+    { Public declarations }
+  end;
+
+var
+  frmTelaHeranca: TfrmTelaHeranca;
+
+implementation
+
+{$R *.dfm}
+
+uses uDTMConexao;
+
+function TfrmuTelaHeranca.RetornarCampoTraduzido(Campo:String):String;
+var i:Integer;
+begin
+  for I := 0 to QryListagem.Fields.Count-1 do begin
+      if lowercase (QryListagem.Fields[i].FieldName)=lowercase(Campo) then begin
+      Result:= QryListagem.Fields[i].DisplayLabel;
+      Break;
+    end;
+  end;
+end;
+
+end.

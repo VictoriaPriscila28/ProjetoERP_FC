@@ -1,0 +1,38 @@
+unit uPedidos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, Vcl.ComCtrls;
+
+type
+  TfrmPedidoVenda = class(TForm)
+    pnlTop: TPanel;
+    LabeledEdit1: TLabeledEdit;
+    Button1: TButton;
+    pnlBottom: TPanel;
+    Panel1: TPanel;
+    DBNavigator1: TDBNavigator;
+    DBGrid1: TDBGrid;
+    Label1: TLabel;
+    ZQuery1: TZQuery;
+    DataSource1: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPedidoVenda: TfrmPedidoVenda;
+
+implementation
+
+{$R *.dfm}
+
+uses uDTMConexao;
+
+end.

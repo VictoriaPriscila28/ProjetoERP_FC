@@ -1,0 +1,49 @@
+unit uPedidoVenda;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, Vcl.ComCtrls;
+
+type
+  TfrmPedidoVenda = class(TForm)
+    DBGrid1: TDBGrid;
+    ZQuery1: TZQuery;
+    DataSource1: TDataSource;
+    ZQuery1itemId: TZIntegerField;
+    ZQuery1pedidoId: TZIntegerField;
+    ZQuery1produtoId: TZIntegerField;
+    ZQuery1quantidade: TZFMTBCDField;
+    ZQuery1precoUnitario: TZFMTBCDField;
+    ZQuery1precoTotal: TZFMTBCDField;
+    ZQuery1Tipo: TZUnicodeStringField;
+    ZQuery1Nota: TZUnicodeStringField;
+    ZQuery1Datamovim: TZDateTimeField;
+    ZQuery1Fornecedor: TZUnicodeStringField;
+    PageControl1: TPageControl;
+    pnlTop: TPanel;
+    Label1: TLabel;
+    LabeledEdit1: TLabeledEdit;
+    Button1: TButton;
+    pnlBottom: TPanel;
+    Panel1: TPanel;
+    TabSheet1: TTabSheet;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPedidoVenda: TfrmPedidoVenda;
+
+implementation
+
+{$R *.dfm}
+
+uses uDTMConexao;
+
+end.

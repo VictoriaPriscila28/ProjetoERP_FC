@@ -1,0 +1,102 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.WinXCalendars, Vcl.Grids,
+  Vcl.Samples.Calendar, Vcl.ComCtrls, uProdutos, uPedidos, uVendas;
+type
+  TfrmPrincipal = class(TForm)
+    pnlLateral: TPanel;
+    btnTelaInicial: TSpeedButton;
+    btnPedidos: TSpeedButton;
+    btnClientes: TSpeedButton;
+    btnProdutos: TSpeedButton;
+    btnSistema: TSpeedButton;
+    btnSair: TSpeedButton;
+    Image1: TImage;
+    lblBemVindo: TLabel;
+    lblDescricao: TLabel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    MonthCalendar1: TMonthCalendar;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    StatusBar1: TStatusBar;
+    Timer1: TTimer;
+    procedure btnSairClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure btnProdutosClick(Sender: TObject);
+    procedure btnPedidosClick(Sender: TObject);
+    procedure btnVendasClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+//procedure TfrmPrincipal.btnClientesClick(Sender: TObject);
+//begin
+//  frmTelaHeranca:=TfrmTelaHeranca.Create(Self);  // cria na memoria
+//  frmTelaHeranca.ShowModal;                       // mostra na tela
+//  frmTelaHeranca.Release;                         //apagar da memoria
+//end;
+//
+//procedure TfrmPrincipal.btnProdutosClick(Sender: TObject);
+//begin
+//  frmTelaProdutos:=TfrmTelaProdutos.Create(Self);  // cria na memoria
+//  frmTelaProdutos.ShowModal;                       // mostra na tela
+//  frmTelaProdutos.Release;                         //apagar da memoria
+//end;
+
+procedure TfrmPrincipal.btnProdutosClick(Sender: TObject);
+begin
+  frmProdutos := TfrmProdutos.Create(Self);  // Cria na memória
+  frmProdutos.ShowModal;                          // Mostra o formulário de forma não modal
+  frmProdutos.Release;                       // Agenda a liberação
+end;
+
+
+procedure TfrmPrincipal.btnSairClick(Sender: TObject);
+begin
+Close;
+end;
+
+procedure TfrmPrincipal.btnVendasClick(Sender: TObject);
+begin
+  frmVendas := TfrmVendas.Create(Self);  // Cria na memória
+  frmVendas.ShowModal;                          // Mostra o formulário de forma não modal
+  frmVendas.Release;                       // Agenda a liberação
+end;
+
+procedure TfrmPrincipal.btnPedidosClick(Sender: TObject);
+begin
+  frmPedidos := TfrmPedidos.Create(Self);  // Cria na memória
+  frmPedidos.ShowModal;                          // Mostra o formulário de forma não modal
+  frmPedidos.Release;                       // Agenda a liberação
+end;
+
+procedure TfrmPrincipal.Timer1Timer(Sender: TObject);
+begin
+  StatusBar1.Panels[0].Text:=DateTostr(now);
+  StatusBar1.Panels[1].Text:=TimeTostr(now);
+  StatusBar1.Panels[2].Text:='Bem vindo ao sistema!';
+end;
+
+end.

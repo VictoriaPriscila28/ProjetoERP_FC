@@ -1,0 +1,103 @@
+unit uVendas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, Vcl.ComCtrls;
+
+type
+  TfrmVendas = class(TForm)
+    pnlTop: TPanel;
+    Label1: TLabel;
+    pnlBottom: TPanel;
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    DBNavigator1: TDBNavigator;
+    QryVendas: TZQuery;
+    dtsVendas: TDataSource;
+    QryVendaspedidoId: TZIntegerField;
+    QryVendasfornecedor: TZUnicodeStringField;
+    QryVendasvalortotal: TZFMTBCDField;
+    QryVendasTipo: TZUnicodeStringField;
+    QryVendasNota: TZUnicodeStringField;
+    QryVendasDatamovim: TZDateTimeField;
+    Panel3: TPanel;
+    qryCalculo: TZQuery;
+    qryCalculopedidoId: TZIntegerField;
+    qryCalculoProduto: TZUnicodeStringField;
+    qryCalculoPrecoProduto: TZFMTBCDField;
+    qryCalculoquantidade: TZFMTBCDField;
+    qryCalculoBaseICMS: TZFMTBCDField;
+    qryCalculoValorICMS: TZFMTBCDField;
+    qryCalculoValorIPI: TZFMTBCDField;
+    qryCalculoValorTotalComImpostos: TZFMTBCDField;
+    dtsCalculo: TDataSource;
+    Label2: TLabel;
+    Panel2: TPanel;
+    Label3: TLabel;
+    DBGrid2: TDBGrid;
+    LabeledEdit1: TLabeledEdit;
+    procedure CalcularImpostos;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmVendas: TfrmVendas;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmVendas.CalcularImpostos;
+begin
+  uDTMConexao.qryCalculo.SQL.Text :=
+    'SELECT ' +
+    '    pv.pedidoId, ' +
+    '    p.nome AS Produto, ' +
+    '    p.preco AS PrecoProduto, ' +
+    '    pvi.quantidade, ' +
+    '    (pvi.quantidade * pvi.precoUnitario) AS BaseICMS, ' +
+    '    ((pvi.quantidade * pvi.precoUnitario) * 0.18) AS ValorICMS, ' +
+    '    ((pvi.quantidade * pvi.precoUnitario) * 0.05) AS ValorIPI, ' +
+    '    ((pvi.quantidade * pvi.precoUnitario) + ' +
+    '     ((pvi.quantidade * pvi.precoUnitario) * 0.18) + ' +
+    '     ((pvi.quantidade * pvi.precoUnitario) * 0.05)) AS ValorTotalComImpostos ' +
+    'FROM ' +
+    '    sfc_pedido_venda_it pvi ' +
+    'JOIN ' +
+    '    sfc_pedido_venda pv ON pv.pedidoId = pvi.pedidoId ' +
+    'JOIN ' +
+    '    produtos p ON p.produtoId = pvi.produtoId ' +
+    'ORDER BY ' +
+    '    pv.pedidoId;';
+  dmConexao.qryCalculo.Open;
+
+  // Exibir dados na interface (Exemplo usando ListView)
+  ListViewProdutos.Items.Clear;
+  while not dmConexao.qryCalculo.Eof do
+  begin
+    with ListViewProdutos.Items.Add do
+    begin
+      Caption := dmConexao.qryCalculo.FieldByName('Produto').AsString;
+      SubItems.Add(dmConexao.qryCalculo.FieldByName('quantidade').AsString);
+      SubItems.Add(dmConexao.qryCalculo.FieldByName('BaseICMS').AsString);
+      SubItems.Add(dmConexao.qryCalculo.FieldByName('ValorICMS').AsString);
+      SubItems.Add(dmConexao.qryCalculo.FieldByName('ValorIPI').AsString);
+      SubItems.Add(dmConexao.qryCalculo.FieldByName('ValorTotalComImpostos').AsString);
+    end;
+    dmConexao.qryCalculo.Next;
+  end;
+
+  dmConexao.qryCalculo.Close;
+end;
+
+
+uses uDTMConexao;
+
+end.
