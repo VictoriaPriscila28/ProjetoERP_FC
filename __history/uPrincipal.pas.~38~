@@ -6,15 +6,16 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls,
   Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.WinXCalendars, Vcl.Grids,
-  Vcl.Samples.Calendar, Vcl.ComCtrls, uProdutos, uPedidoVenda;
+  Vcl.Samples.Calendar, Vcl.ComCtrls, uProdutos, uPedidos, uVendas,
+  VclTee.TeeGDIPlus, Data.DB, VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs,
+  VCLTee.Chart, VCLTee.DBChart, uClientes;
 type
   TfrmPrincipal = class(TForm)
     pnlLateral: TPanel;
     btnTelaInicial: TSpeedButton;
-    btnVendas: TSpeedButton;
+    btnPedidos: TSpeedButton;
     btnClientes: TSpeedButton;
     btnProdutos: TSpeedButton;
-    btnRelatorios: TSpeedButton;
     btnSistema: TSpeedButton;
     btnSair: TSpeedButton;
     Image1: TImage;
@@ -27,17 +28,20 @@ type
     Panel6: TPanel;
     Panel7: TPanel;
     Panel8: TPanel;
-    Panel9: TPanel;
     MonthCalendar1: TMonthCalendar;
     Image2: TImage;
     Image3: TImage;
-    Image4: TImage;
     StatusBar1: TStatusBar;
     Timer1: TTimer;
+    DBChart1: TDBChart;
+    Series1: TLineSeries;
+    Label1: TLabel;
     procedure btnSairClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure btnProdutosClick(Sender: TObject);
+    procedure btnPedidosClick(Sender: TObject);
     procedure btnVendasClick(Sender: TObject);
+    procedure btnClientesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,9 +84,24 @@ end;
 
 procedure TfrmPrincipal.btnVendasClick(Sender: TObject);
 begin
-  frmPedidoVenda := TfrmPedidoVenda.Create(Self);  // Cria na memória
-  frmPedidoVenda.ShowModal;                          // Mostra o formulário de forma não modal
-  frmPedidoVenda.Release;                       // Agenda a liberação
+  frmVendas := TfrmVendas.Create(Self);  // Cria na memória
+  frmVendas.ShowModal;                          // Mostra o formulário de forma não modal
+  frmVendas.Release;                       // Agenda a liberação
+end;
+
+
+procedure TfrmPrincipal.btnClientesClick(Sender: TObject);
+begin
+  frmClientes := TfrmClientes.Create(Self);  // Cria na memória
+  frmClientes.ShowModal;                          // Mostra o formulário de forma não modal
+  frmClientes.Release;                       // Agenda a liberação
+end;
+
+procedure TfrmPrincipal.btnPedidosClick(Sender: TObject);
+begin
+  frmPedidos := TfrmPedidos.Create(Self);  // Cria na memória
+  frmPedidos.ShowModal;                          // Mostra o formulário de forma não modal
+  frmPedidos.Release;                       // Agenda a liberação
 end;
 
 procedure TfrmPrincipal.Timer1Timer(Sender: TObject);

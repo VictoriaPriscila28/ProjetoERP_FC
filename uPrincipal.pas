@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, Vcl.StdCtrls, Vcl.WinXCalendars, Vcl.Grids,
   Vcl.Samples.Calendar, Vcl.ComCtrls, uProdutos, uPedidos, uVendas,
   VclTee.TeeGDIPlus, Data.DB, VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs,
-  VCLTee.Chart, VCLTee.DBChart, uClientes;
+  VCLTee.Chart, VCLTee.DBChart, uClientes, VCLTee.TeeFunci;
 type
   TfrmPrincipal = class(TForm)
     pnlLateral: TPanel;
@@ -21,13 +21,7 @@ type
     Image1: TImage;
     lblBemVindo: TLabel;
     lblDescricao: TLabel;
-    Panel2: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
     Panel5: TPanel;
-    Panel6: TPanel;
-    Panel7: TPanel;
-    Panel8: TPanel;
     MonthCalendar1: TMonthCalendar;
     Image2: TImage;
     Image3: TImage;
@@ -35,7 +29,13 @@ type
     Timer1: TTimer;
     DBChart1: TDBChart;
     Series1: TLineSeries;
+    Chart1: TChart;
+    Series2: TPieSeries;
+    Chart2: TChart;
+    Series3: TBarSeries;
     Label1: TLabel;
+    Chart3: TChart;
+    BarSeries1: TBarSeries;
     procedure btnSairClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure btnProdutosClick(Sender: TObject);

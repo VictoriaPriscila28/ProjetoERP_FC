@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 845
+  ClientHeight = 749
   ClientWidth = 1332
   Color = clBtnHighlight
   Font.Charset = DEFAULT_CHARSET
@@ -233,9 +233,9 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 161
-    Height = 845
+    Height = 749
     Align = alLeft
-    Color = clSilver
+    Color = clLightgray
     ParentBackground = False
     TabOrder = 0
     object btnTelaInicial: TSpeedButton
@@ -292,7 +292,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object btnSair: TSpeedButton
       Left = 1
-      Top = 816
+      Top = 720
       Width = 159
       Height = 28
       Align = alBottom
@@ -759,75 +759,32 @@ object frmPrincipal: TfrmPrincipal
         44AE426082}
     end
   end
-  object Panel2: TPanel
-    Left = 184
-    Top = 103
-    Width = 240
-    Height = 106
+  object Panel5: TPanel
+    Left = 1008
+    Top = 89
+    Width = 300
+    Height = 250
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
-      Left = 32
+      Left = 12
       Top = 24
-      Width = 18
-      Height = 15
-      Caption = '100'
+      Width = 289
+      Height = 137
+      Caption = 
+        'Lembretes'#13#10#13#10'- Revisar o c'#243'digo para mandar para produ'#231#227'o'#13#10'- Tou' +
+        'r com turma Embarque/Senac 4'#176' per'#237'odo (05/12)'#13#10'- Reuni'#227'o faturam' +
+        'ento Black Friday (10/12)'
     end
   end
-  object Panel3: TPanel
-    Left = 464
-    Top = 103
-    Width = 240
-    Height = 106
-    Caption = 'Panel3'
-    TabOrder = 2
-  end
-  object Panel4: TPanel
-    Left = 744
-    Top = 103
-    Width = 240
-    Height = 106
-    Caption = 'Panel4'
-    TabOrder = 3
-  end
-  object Panel5: TPanel
-    Left = 1024
-    Top = 103
-    Width = 240
-    Height = 106
-    Caption = 'Panel5'
-    TabOrder = 4
-  end
-  object Panel6: TPanel
-    Left = 1024
-    Top = 240
-    Width = 240
-    Height = 201
-    Caption = 'Panel6'
-    TabOrder = 5
-  end
-  object Panel7: TPanel
-    Left = 184
-    Top = 240
-    Width = 800
-    Height = 180
-    Caption = 'Panel7'
-    TabOrder = 6
-  end
-  object Panel8: TPanel
-    Left = 184
-    Top = 452
-    Width = 481
-    Height = 161
-    Caption = 'Panel8'
-    TabOrder = 7
-  end
   object MonthCalendar1: TMonthCalendar
-    Left = 1008
-    Top = 447
+    Left = 1012
+    Top = 359
     Width = 297
-    Height = 184
+    Height = 250
     Date = 45689.000000000000000000
-    TabOrder = 8
+    TabOrder = 2
   end
   object StatusBar1: TStatusBar
     Left = 166
@@ -847,15 +804,15 @@ object frmPrincipal: TfrmPrincipal
       end>
   end
   object DBChart1: TDBChart
-    Left = 690
-    Top = 434
-    Width = 312
-    Height = 197
+    Left = 590
+    Top = 89
+    Width = 400
+    Height = 250
     Title.Text.Strings = (
       'Total de Clientes')
     Legend.Title.Text.Strings = (
       'M'#234's')
-    TabOrder = 10
+    TabOrder = 4
     DefaultCanvas = 'TGDIPlusCanvas'
     ColorPaletteIndex = 13
     object Series1: TLineSeries
@@ -875,10 +832,106 @@ object frmPrincipal: TfrmPrincipal
         0000E06040000000000030664000000000000871400000000000E87740000000
         00003878400000000000687A400000000000A07E400000000000B07840000000
         0000687A4000000000006880400000000000687F400000000000C87E40000000
-        0000787940000000000058764000000000003878400000000000000000000000
+        0000787940000000000058764000000000003878400000000000607840000000
         0000D076400000000000D076400000000000E070400000000000406F40000000
         00008076400000000000887340}
       Detail = {0000000000}
+    end
+  end
+  object Chart1: TChart
+    Left = 184
+    Top = 359
+    Width = 400
+    Height = 272
+    Title.Text.Strings = (
+      'Produtos mais comprados')
+    View3DOptions.Elevation = 315
+    View3DOptions.Orthogonal = False
+    View3DOptions.Perspective = 0
+    View3DOptions.Rotation = 360
+    TabOrder = 5
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series2: TPieSeries
+      HoverElement = []
+      Marks.Tail.Margin = 2
+      XValues.Order = loAscending
+      YValues.Name = 'Pie'
+      YValues.Order = loNone
+      Frame.InnerBrush.BackColor = clRed
+      Frame.InnerBrush.Gradient.EndColor = clGray
+      Frame.InnerBrush.Gradient.MidColor = clWhite
+      Frame.InnerBrush.Gradient.StartColor = 4210752
+      Frame.InnerBrush.Gradient.Visible = True
+      Frame.MiddleBrush.BackColor = clYellow
+      Frame.MiddleBrush.Gradient.EndColor = 8553090
+      Frame.MiddleBrush.Gradient.MidColor = clWhite
+      Frame.MiddleBrush.Gradient.StartColor = clGray
+      Frame.MiddleBrush.Gradient.Visible = True
+      Frame.OuterBrush.BackColor = clGreen
+      Frame.OuterBrush.Gradient.EndColor = 4210752
+      Frame.OuterBrush.Gradient.MidColor = clWhite
+      Frame.OuterBrush.Gradient.StartColor = clSilver
+      Frame.OuterBrush.Gradient.Visible = True
+      Frame.Width = 4
+      OtherSlice.Legend.Visible = False
+      Data = {
+        04080000000000000000988740FF08000000546F726E656972610000000000C0
+        6240FF090000004D616E6775656972610000000000407140FF0700000043656C
+        756C61720000000000407F40FF070000004CE26D706164610000000000088340
+        FF0600000054696E7461730000000000E08540FF07000000417A756C656A6F00
+        00000000407340FF090000004675726164656972610000000000405940FF0700
+        000043616465697261}
+    end
+  end
+  object Chart2: TChart
+    Left = 184
+    Top = 89
+    Width = 400
+    Height = 250
+    Foot.Text.Strings = (
+      'Semestral')
+    Legend.Title.Text.Strings = (
+      'Faturamento em '
+      'milh'#245'es')
+    Title.Text.Strings = (
+      'Faturamento 2'#176' Semestre')
+    TabOrder = 6
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object Series3: TBarSeries
+      HoverElement = []
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Bar'
+      YValues.Order = loNone
+      Data = {
+        04060000000000000000002E40FF030000006A756C0000000000002440FF0300
+        000061676F0000000000002A40FF030000007365740000000000003440FF0300
+        00006F75740000000000002640FF030000006E6F760000000000004940FF0300
+        000064657A}
+    end
+  end
+  object Chart3: TChart
+    Left = 590
+    Top = 359
+    Width = 400
+    Height = 272
+    Foot.Text.Strings = (
+      'Semestral')
+    Title.Text.Strings = (
+      'Investimentos')
+    TabOrder = 7
+    DefaultCanvas = 'TGDIPlusCanvas'
+    ColorPaletteIndex = 13
+    object BarSeries1: TBarSeries
+      HoverElement = []
+      XValues.Name = 'X'
+      XValues.Order = loAscending
+      YValues.Name = 'Bar'
+      YValues.Order = loNone
+      DataSources = (
+        'Series1')
     end
   end
   object Timer1: TTimer
